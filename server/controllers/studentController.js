@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 // @route   GET /api/students
 // @access  Private
 exports.getStudents = async (req, res) => {
-    
+
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;

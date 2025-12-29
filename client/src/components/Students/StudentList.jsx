@@ -97,37 +97,42 @@ const StudentList = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-800">Students</h2>
-        <div className="flex gap-3">
+      {/* Header Section */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900">Students Directory</h2>
+          <p className="text-gray-600 mt-1">Manage and view all student records</p>
+        </div>
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => handleExport('csv')}
             disabled={exporting || students.length === 0}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition disabled:opacity-50"
+            className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg transition shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
             <Download size={18} />
-            Export CSV
+            CSV
           </button>
           <button
             onClick={() => handleExport('pdf')}
             disabled={exporting || students.length === 0}
-            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition disabled:opacity-50"
+            className="flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-5 py-2.5 rounded-lg transition shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
             <Download size={18} />
-            Export PDF
+            PDF
           </button>
           <Link
             to="/students/add"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg transition shadow-md hover:shadow-lg font-medium"
           >
-            Add Student
+            + Add Student
           </Link>
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
+      {/* Search and Filter Section */}
+      <div className="bg-white rounded-xl shadow-sm p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <SearchBar onSearch={handleSearch} placeholder="Search by name or email..." />
-        <label className="flex items-center gap-2 text-sm text-gray-700">
+        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer">
           <input
             type="checkbox"
             checked={showDeleted}
@@ -135,80 +140,96 @@ const StudentList = () => {
               setShowDeleted(e.target.checked);
               setCurrentPage(1);
             }}
-            className="rounded"
+            className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
           />
-          Show Deleted
+          Show Deleted Records
         </label>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      {/* Table Section */}
+      <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-black">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Name
+                <th className="px-6 py-4 text-left text-xs font-bold text-white uppercase tracking-wider">
+                  Student Name
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Email
+                <th className="px-6 py-4 text-left text-xs font-bold text-white uppercase tracking-wider">
+                  Email Address
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Phone
+                <th className="px-6 py-4 text-left text-xs font-bold text-white uppercase tracking-wider">
+                  Phone Number
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-bold text-white uppercase tracking-wider">
                   Gender
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-left text-xs font-bold text-white uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-4 text-center text-xs font-bold text-white uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-100">
               {students.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="px-6 py-8 text-center text-gray-500">
-                    No students found
+                  <td colSpan="6" className="px-6 py-12 text-center">
+                    <div className="flex flex-col items-center justify-center text-gray-400">
+                      <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                      <p className="text-lg font-medium">No students found</p>
+                      <p className="text-sm">Try adjusting your search or filters</p>
+                    </div>
                   </td>
                 </tr>
               ) : (
-                students.map((student) => (
-                  <tr key={student._id} className="hover:bg-gray-50">
+                students.map((student, index) => (
+                  <tr key={student._id} className={`hover:bg-indigo-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
-                        {student.firstName} {student.lastName}
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                          <span className="text-indigo-600 font-bold text-sm">
+                            {student.firstName[0]}{student.lastName[0]}
+                          </span>
+                        </div>
+                        <div className="ml-4">
+                          <div className="text-sm font-semibold text-gray-900">
+                            {student.firstName} {student.lastName}
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{student.email}</div>
+                      <div className="text-sm text-gray-700">{student.email}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">
-                        {student.phoneNumber || 'N/A'}
+                      <div className="text-sm text-gray-700">
+                        {student.phoneNumber || <span className="text-gray-400 italic">Not provided</span>}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{student.gender}</div>
+                      <div className="text-sm text-gray-700">{student.gender}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        className={`px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full ${
                           student.isDeleted
-                            ? 'bg-red-100 text-red-800'
-                            : 'bg-green-100 text-green-800'
+                            ? 'bg-red-100 text-red-700 border border-red-200'
+                            : 'bg-green-100 text-green-700 border border-green-200'
                         }`}
                       >
                         {student.isDeleted ? 'Deleted' : 'Active'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <div className="flex justify-end gap-2">
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <div className="flex justify-center gap-3">
                         <Link
                           to={`/students/${student._id}`}
-                          className="text-indigo-600 hover:text-indigo-900"
-                          title="View"
+                          className="text-indigo-600 hover:text-indigo-900 hover:bg-indigo-100 p-2 rounded-lg transition-all"
+                          title="View Details"
                         >
                           <Eye size={18} />
                         </Link>
@@ -216,8 +237,8 @@ const StudentList = () => {
                           <>
                             <Link
                               to={`/students/edit/${student._id}`}
-                              className="text-blue-600 hover:text-blue-900"
-                              title="Edit"
+                              className="text-blue-600 hover:text-blue-900 hover:bg-blue-100 p-2 rounded-lg transition-all"
+                              title="Edit Student"
                             >
                               <Edit size={18} />
                             </Link>
@@ -229,8 +250,8 @@ const StudentList = () => {
                                   name: `${student.firstName} ${student.lastName}`,
                                 })
                               }
-                              className="text-red-600 hover:text-red-900"
-                              title="Delete"
+                              className="text-red-600 hover:text-red-900 hover:bg-red-100 p-2 rounded-lg transition-all"
+                              title="Delete Student"
                             >
                               <Trash2 size={18} />
                             </button>
@@ -239,8 +260,8 @@ const StudentList = () => {
                         {student.isDeleted && (
                           <button
                             onClick={() => handleRestore(student._id)}
-                            className="text-green-600 hover:text-green-900"
-                            title="Restore"
+                            className="text-green-600 hover:text-green-900 hover:bg-green-100 p-2 rounded-lg transition-all"
+                            title="Restore Student"
                           >
                             <RotateCcw size={18} />
                           </button>
