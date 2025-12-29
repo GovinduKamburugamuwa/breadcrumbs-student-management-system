@@ -23,13 +23,6 @@ const Home = () => {
             {/* Main Content - Centered Hero */}
             <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-6">
                 <div className="text-center text-white w-full max-w-7xl mx-auto flex flex-col justify-center">
-                    {/* Logo/Icon */}
-                    <div className="mb-4">
-                        <div className="inline-block p-4 bg-white/20 rounded-2xl shadow-2xl backdrop-blur-sm">
-                            <GraduationCap size={48} className="text-white" />
-                        </div>
-                    </div>
-
                     {/* Main Heading with Background */}
                     <div className="bg-black/60 backdrop-blur-md rounded-2xl p-6 mb-6 shadow-2xl border border-white/30 max-w-4xl mx-auto">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight tracking-wide">
