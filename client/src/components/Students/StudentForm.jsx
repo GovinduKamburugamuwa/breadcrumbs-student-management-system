@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import API from '../../api/axios';
 import toast from 'react-hot-toast';
+import { Calendar } from 'lucide-react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const StudentForm = ({ mode = 'add' }) => {
   const navigate = useNavigate();
@@ -220,15 +223,30 @@ const StudentForm = ({ mode = 'add' }) => {
 
           {/* Birthdate */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Birthdate</label>
-            <input
-              type="date"
-              name="birthdate"
-              value={formData.birthdate}
-              onChange={handleChange}
-              max={new Date().toISOString().split('T')[0]}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Date of Birth
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                <Calendar size={18} className="text-gray-400" />
+              </div>
+              <DatePicker
+                selected={formData.birthdate ? new Date(formData.birthdate) : null}
+                onChange={(date) => {
+                  const formattedDate = date ? date.toISOString().split('T')[0] : '';
+                  setFormData((prev) => ({ ...prev, birthdate: formattedDate }));
+                }}
+                dateFormat="MMMM d, yyyy"
+                maxDate={new Date()}
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                placeholderText="Select date of birth"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-700 cursor-pointer hover:border-indigo-400 transition"
+                wrapperClassName="w-full"
+              />
+            </div>
+            <p className="mt-1 text-xs text-gray-500">Select your date of birth</p>
           </div>
 
           {/* Buttons */}

@@ -1,8 +1,8 @@
 const Student = require('../models/student');
 const { validationResult } = require('express-validator');
 
-// @desc    Get all students with pagination and search
-// @route   GET /api/students
+//Get all students with pagination and search
+// GET /api/students
 // @access  Private
 exports.getStudents = async (req, res) => {
 
@@ -49,8 +49,7 @@ exports.getStudents = async (req, res) => {
 };
 
 // @desc    Get single student
-// @route   GET /api/students/:id
-// @access  Private
+
 exports.getStudent = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
@@ -76,8 +75,7 @@ exports.getStudent = async (req, res) => {
 };
 
 // @desc    Create new student
-// @route   POST /api/students
-// @access  Private
+
 exports.createStudent = async (req, res) => {
   try {
     // Validation errors
@@ -124,8 +122,7 @@ exports.createStudent = async (req, res) => {
 };
 
 // @desc    Update student
-// @route   PUT /api/students/:id
-// @access  Private
+
 exports.updateStudent = async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -176,8 +173,7 @@ exports.updateStudent = async (req, res) => {
 };
 
 // @desc    Delete student (soft delete)
-// @route   DELETE /api/students/:id
-// @access  Private
+
 exports.deleteStudent = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
@@ -208,8 +204,7 @@ exports.deleteStudent = async (req, res) => {
 };
 
 // @desc    Restore deleted student
-// @route   PUT /api/students/:id/restore
-// @access  Private
+
 exports.restoreStudent = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
@@ -240,8 +235,7 @@ exports.restoreStudent = async (req, res) => {
 };
 
 // @desc    Permanently delete student
-// @route   DELETE /api/students/:id/permanent
-// @access  Private
+
 exports.permanentDeleteStudent = async (req, res) => {
   try {
     const student = await Student.findByIdAndDelete(req.params.id);

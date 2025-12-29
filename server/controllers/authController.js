@@ -54,8 +54,7 @@ exports.register = async (req, res) => {
 };
 
 // @desc    Login user
-// @route   POST /api/auth/login
-// @access  Public
+
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -91,7 +90,6 @@ exports.login = async (req, res) => {
 };
 
 // @desc    Get current user
-// @route   GET /api/auth/me
 // @access  Private
 exports.getMe = async (req, res) => {
   try {
