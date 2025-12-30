@@ -89,8 +89,6 @@ PORT=5000
 NODE_ENV=development
 MONGODB_URI=your_mongodb_connection_string_here
 JWT_SECRET=your_secret_key_here_12345
-JWT_EXPIRE=7d
-CLIENT_URL=http://localhost:5173
 ```
 
 ### Step 3: Install Frontend Dependencies
@@ -105,12 +103,9 @@ npm install
 # Copy the example file
 cp .env.example .env
 
-# Or create manually with this content:
+# and add this content:
 VITE_API_URL=http://localhost:5000/api
 ```
-
-### Step 4: Configure MongoDB Database
-See [Database Setup](#-database-setup) section below
 
 ### Step 5: Start the Application
 
@@ -138,61 +133,7 @@ npm run dev
 
 ---
 
-## 💾 Database Setup
 
-This project uses **MongoDB Atlas** (cloud database). Follow these steps:
-
-### 1. Create MongoDB Atlas Account (FREE)
-
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Click **"Try Free"** and create an account
-3. Verify your email
-
-### 2. Create a Database Cluster
-
-1. Click **"Build a Database"**
-2. Choose **"M0 FREE"** tier
-3. Select a **Cloud Provider & Region** (choose closest to you)
-4. Cluster Name: `Cluster0` (default is fine)
-5. Click **"Create"**
-
-### 3. Create Database User
-
-1. **Security** → **Database Access** → **Add New Database User**
-2. Authentication Method: **Password**
-3. Username: `studentadmin` (or your choice)
-4. Password: Create a strong password (**SAVE THIS!**)
-5. Database User Privileges: **"Atlas admin"**
-6. Click **"Add User"**
-
-### 4. Setup Network Access
-
-1. **Security** → **Network Access** → **Add IP Address**
-2. Click **"Allow Access from Anywhere"** (for development)
-3. IP Address: `0.0.0.0/0` (auto-filled)
-4. Click **"Confirm"**
-
-### 5. Get Connection String
-
-1. **Database** → **Connect** → **Drivers**
-2. Driver: **Node.js**
-3. **Copy** the connection string
-4. It looks like:
-   ```
-   mongodb+srv://studentadmin:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
-   ```
-
-### 6. Update Your `.env` File
-
-Open `server/.env` and update:
-```env
-MONGODB_URI=mongodb+srv://studentadmin:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/student-management?retryWrites=true&w=majority
-```
-
-**Important:** 
-- Replace `YOUR_PASSWORD` with the password you created
-- Replace `cluster0.xxxxx` with your actual cluster address
-- The database name `student-management` will be auto-created
 
 ### 7. Verify Connection
 
