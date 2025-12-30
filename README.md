@@ -46,15 +46,6 @@ A full-stack CRUD application for managing student records with authentication, 
 ✅ **Update** - Edit existing student information  
 ✅ **Delete** - Soft delete with confirmation prompt  
 ✅ **View Details** - Full student profile modal  
-
-### Bonus Features Implemented
-✅ **Search** - Real-time search by name or email  
-✅ **Export to CSV** - Download student data  
-✅ **Export to PDF** - Generate printable reports  
-✅ **Soft Delete & Restore** - Recover deleted records  
-✅ **Authentication** - Secure login/register system  
-✅ **Pagination** - Navigate large datasets efficiently  
-
 ---
 
 ## 🚀 Setup Instructions
