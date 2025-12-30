@@ -65,6 +65,7 @@ cd student-management-system
 ```bash
 cd server
 npm install
+npm install mongodb
 ```
 
 **Create `.env` file in server folder:**
