@@ -29,20 +29,13 @@ A full-stack CRUD application for managing student records with authentication, 
 - **JWT** (jsonwebtoken v9.0.3) - Authentication
 - **bcryptjs** (v3.0.3) - Password hashing
 - **express-validator** (v7.3.1) - Input validation
-- **cors** (v2.8.5) - Cross-origin resource sharing
-- **dotenv** (v17.2.3) - Environment variables
 
 ### Frontend
 - **React** (v19.2.0) with **Vite** (v7.2.4)
-- **React Router DOM** (v7.11.0) - Client-side routing
 - **Tailwind CSS** (v4.1.18) - Utility-first CSS framework
 - **Axios** (v1.13.2) - HTTP client
 - **React Hot Toast** (v2.6.0) - Toast notifications
 - **Lucide React** (v0.562.0) - Icon library
-
-### Development Tools
-- **Nodemon** (v3.1.11) - Auto-restart server
-- **ESLint** - Code linting
 
 ---
 
@@ -62,17 +55,10 @@ A full-stack CRUD application for managing student records with authentication, 
 ✅ **Soft Delete & Restore** - Recover deleted records  
 ✅ **Authentication** - Secure login/register system  
 ✅ **Pagination** - Navigate large datasets efficiently  
-✅ **Responsive Design** - Mobile, tablet, desktop support
 
 ---
 
 ## 🚀 Setup Instructions
-
-### Prerequisites
-Before you begin, ensure you have the following installed:
-- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
-- **npm** (comes with Node.js)
-- **Git** (optional, for cloning)
 
 ### Step 1: Download the Project
 
