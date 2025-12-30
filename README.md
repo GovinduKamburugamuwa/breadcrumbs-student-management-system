@@ -6,16 +6,6 @@ A full-stack CRUD application for managing student records with authentication, 
 > **Position**: Associate Software Engineer Intern  
 > **Tech Stack**: MERN (MongoDB, Express, React, Node.js)
 
----
-
-## 📋 Table of Contents
-- [Tech Stack](#-tech-stack)
-- [Features](#-features)
-- [Setup Instructions](#-setup-instructions)
-- [Running the Application](#-running-the-application)
-- [Bonus Features](#-bonus-features-implemented)
-
----
 
 ## 🛠️ Tech Stack
 
@@ -92,7 +82,44 @@ npm install
 VITE_API_URL=http://localhost:5000/api
 ```
 
-### Step 5: Start the Application
+## Step 5: MogoDB Connection
+Create Account & Cluster:
+
+Go to https://www.mongodb.com/cloud/atlas
+Sign up for a free account
+Click "Build a Database"
+Choose "Free" (M0 Sandbox)
+Select your preferred cloud provider and region
+Click "Create Cluster"
+
+
+Setup Database Access:
+
+Go to "Database Access" in left sidebar
+Click "Add New Database User"
+Choose "Password" authentication
+Create username and password (remember these!)
+Set user privileges to "Read and write to any database"
+Click "Add User"
+
+
+Setup Network Access:
+
+Go to "Network Access" in left sidebar
+Click "Add IP Address"
+Click "Allow Access from Anywhere" (0.0.0.0/0) for development
+Click "Confirm"
+
+
+Get Connection String:
+
+Go to "Database" in left sidebar
+Click "Connect" on your cluster
+Choose "Connect your application"
+Copy the connection string
+It looks like: mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+
+### Step 6: Start the Application
 
 Open **TWO terminal windows**:
 
