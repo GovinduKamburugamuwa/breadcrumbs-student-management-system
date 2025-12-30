@@ -14,8 +14,6 @@ A full-stack CRUD application for managing student records with authentication, 
 - [Setup Instructions](#-setup-instructions)
 - [Running the Application](#-running-the-application)
 - [Bonus Features](#-bonus-features-implemented)
-- [API Endpoints](#-api-endpoints)
-- [Project Structure](#-project-structure)
 
 ---
 
