@@ -133,8 +133,6 @@ npm run dev
 
 ---
 
-
-
 ### 7. Verify Connection
 
 When you start the backend server, you should see:
