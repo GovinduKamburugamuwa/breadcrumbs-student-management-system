@@ -64,7 +64,7 @@ A full-stack CRUD application for managing student records with authentication, 
 
 **Option A: Clone from GitHub**
 ```bash
-git clone https://github.com/your-username/student-management-system.git
+git clone https://github.com/your-username/student-management-system.git](https://github.com/GovinduKamburugamuwa/breadcrumbs-student-management-system
 cd student-management-system
 ```
 
